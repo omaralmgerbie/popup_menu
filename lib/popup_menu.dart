@@ -105,6 +105,7 @@ class PopupMenu {
       List<MenuItemProvider> items}) {
 //TODO: here i add dynamic 
     this.data = data ?? null;
+    print(data.toString());
     this.onClickMenu = onClickMenu;
     this.dismissCallback = onDismiss;
     this.stateChanged = stateChanged;
