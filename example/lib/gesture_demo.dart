@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:popup_menu/popup_menu.dart';
 
@@ -7,7 +6,6 @@ class GestureDemo extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _GestureDemoState();
   }
-
 }
 
 class _GestureDemoState extends State<GestureDemo> {
@@ -90,12 +88,8 @@ class _GestureDemoState extends State<GestureDemo> {
         onDismiss: onDismiss);
     menu.show(widgetKey: btnKey);
   }
-//TODO: here i add dynamic 
-  void onClickMenu(MenuItemProvider item,dynamic d) {
 
-  }
+  void onClickMenu(MenuItemProvider item) {}
 
-  void onDismiss() {
-    
-  }
+  void onDismiss() {}
 }

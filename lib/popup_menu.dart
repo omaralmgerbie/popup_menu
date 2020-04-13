@@ -40,8 +40,7 @@ class MenuItem extends MenuItemProvider {
 
 enum MenuType { big, oneLine }
 
-//TODO: here i add dynamic 
-typedef MenuClickCallback = Function(MenuItemProvider item,dynamic data);
+typedef MenuClickCallback = Function(MenuItemProvider item);
 typedef PopupMenuStateChanged = Function(bool isShow);
 
 class PopupMenu {
@@ -56,10 +55,6 @@ class PopupMenu {
 
   /// col count
   int _col;
-
-//TODO: here i add dynamic 
-  /// userful for anyting
-  dynamic data;
 
   /// The left top point of this menu.
   Offset _offset;
@@ -100,12 +95,8 @@ class PopupMenu {
       Color backgroundColor,
       Color highlightColor,
       Color lineColor,
-      dynamic data,
       PopupMenuStateChanged stateChanged,
       List<MenuItemProvider> items}) {
-//TODO: here i add dynamic 
-    this.data = data ?? null;
-    print(data.toString());
     this.onClickMenu = onClickMenu;
     this.dismissCallback = onDismiss;
     this.stateChanged = stateChanged;
@@ -360,13 +351,9 @@ class PopupMenu {
     );
   }
 
-//TODO: here i add dynamic 
   void itemClicked(MenuItemProvider item) {
     if (onClickMenu != null) {
-      onClickMenu(item,'');
-    }else if(onClickMenu != null&&data!=null){
-      onClickMenu(item,data);
-
+      onClickMenu(item);
     }
 
     dismiss();
@@ -482,7 +469,14 @@ class _MenuItemWidgetState extends State<_MenuItemWidget> {
           )
         ],
       );
-    } else {
+    } else if(widget.item.menuImage != null&&widget.item.menuTitle==null){
+      // only image
+      return Container(
+            width: 30.0,
+            height: 30.0,
+            child: widget.item.menuImage,
+          );
+    }else {
       // only text
       return Container(
         child: Center(
